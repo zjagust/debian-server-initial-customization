@@ -304,7 +304,7 @@ function setBashrc ()
 	# Backup distribution .bashrc
 	if [ -f "/root/.bashrc" ]
 	then
-		cp /root/.bachrc /root/.bachrc.dist
+		cp /root/.bashrc /root/.bachrc.dist
 	else
 		echo "No default .bashrc found, no backup required."
 	fi
