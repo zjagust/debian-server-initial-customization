@@ -37,8 +37,9 @@ function initialize ()
 		    ${B}** IMPORTANT **${R}
 
 		    This script will automate initial customization of Debian minimal installations. Please refer to
-			https://zacks.eu/debian-server-initial-customization/ and https://github.com/zjagust/debian-server-initial-customization/
-			for more information.
+		    https://zacks.eu/debian-server-initial-customization/ and
+		    https://github.com/zjagust/debian-server-initial-customization/
+		    for more information.
 
 		    !! SCRIPT WILL REBOOT YOR SERVER UPON COMPLETION !!
 
