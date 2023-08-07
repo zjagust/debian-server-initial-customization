@@ -119,26 +119,26 @@ function setSources ()
 	if [[ "$OS_VERSION" -ge "12" ]]
 	then
 		echo -e "# Main Repos
-		deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free-firmware
-		deb http://deb.debian.org/debian-security/ $OS_CODENAME/updates main contrib non-free-firmware
-		deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free-firmware
-		# Sources - enable only when needed
-		#deb-src http://deb.debian.org/debian $OS_CODENAME main
-		#deb-src http://deb.debian.org/debian-security/ $OS_CODENAME/updates main
-		#deb-src http://deb.debian.org/debian $OS_CODENAME-updates main
-		# Backports - For software like Git, Redis, etc.
-		deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free-firmware" > /etc/apt/sources.list
+        deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free-firmware
+        deb http://deb.debian.org/debian-security/ $OS_CODENAME-security main contrib non-free-firmware
+        deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free-firmware
+        # Sources - enable only when needed
+        #deb-src http://deb.debian.org/debian $OS_CODENAME main
+        #deb-src http://deb.debian.org/debian-security/ $OS_CODENAME-security main
+        #deb-src http://deb.debian.org/debian $OS_CODENAME-updates main
+        # Backports - For software like Git, Redis, etc.
+        deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free-firmware" > /etc/apt/sources.list
 	else
 		echo -e "# Main Repos
-		deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free
-		deb http://deb.debian.org/debian-security/ $OS_CODENAME/updates main contrib non-free
-		deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free
-		# Sources - enable only when needed
-		#deb-src http://deb.debian.org/debian $OS_CODENAME main
-		#deb-src http://deb.debian.org/debian-security/ $OS_CODENAME/updates main
-		#deb-src http://deb.debian.org/debian $OS_CODENAME-updates main
-		# Backports - For software like Git, Redis, etc.
-		deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free" > /etc/apt/sources.list
+        deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free
+        deb http://deb.debian.org/debian-security/ $OS_CODENAME-security main contrib non-free
+        deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free
+        # Sources - enable only when needed
+        #deb-src http://deb.debian.org/debian $OS_CODENAME main
+        #deb-src http://deb.debian.org/debian-security/ $OS_CODENAME-security main
+        #deb-src http://deb.debian.org/debian $OS_CODENAME-updates main
+        # Backports - For software like Git, Redis, etc.
+        deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free" > /etc/apt/sources.list
 	fi
 
 	# Update repositories
@@ -279,13 +279,12 @@ function vimRoot ()
 	# Configure Vim for root user
 	mkdir -p /root/.vim/saves
 	cat <<-EOF > /root/.vimrc
-		set tabstop=4
-		set softtabstop=4
-		set expandtab
-		set shiftwidth=4
-		set backupdir=~/.vim/saves/
-		set mousemodel=popup
-		syntax on
+        set tabstop=4
+        set softtabstop=4
+        set expandtab
+        set shiftwidth=4
+        set backupdir=~/.vim/saves/
+        set mousemodel=popup
 	EOF
 
 } # vimRoot end
@@ -358,7 +357,7 @@ function remoteSSH ()
 
 	# Request user public key - external
 	echo -e "On Windows (OpenSSH client must be enabled!), open ${B}Windows PowerShell${R} and please execute the following: "
-	echo -e "${B}type C:\Users\$Env:USERNAME\.ssh\id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
+	echo -e "${B}type C:\Users\\$Env:USERNAME\.ssh\id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
 	echo
 	echo -e "On Linux, open ${B}Terminal${R} and please execute the following: "
 	echo -e "${B}cat /home/\$(whoami)/.ssh/id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
