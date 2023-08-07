@@ -1,0 +1,14 @@
+#!/bin/sh
+
+printf "\n"
+echo "$(tput -T xterm setaf 2)--- $(hostname)$(tput -T xterm sgr0) $(tput -T xterm setaf 1)**GENERAL**$(tput -T xterm sgr0) $(tput -T xterm setaf 2)changes log --- $(tput -T xterm sgr0)"
+printf "\n"
+echo "$(tput -T xterm setaf 1) !! PLEASE CONSULT OUR WIKI AT https://wiki.bot-informatika.hr/ BEFORE DOING ANYTHING ON THIS SERVER !! $(tput -T xterm sgr0)"
+printf "\n"
+echo "$(tput -T xterm setaf 2) * Please append this file ($(tput -T xterm sgr0) $(tput -T xterm setaf 1)/etc/update-motd.d/20-asset-log$(tput -T xterm sgr0) $(tput -T xterm setaf 2)) for any system changes made. $(tput -T xterm sgr0)"
+echo "$(tput -T xterm setaf 2) * Please run$(tput -T xterm sgr0) $(tput -T xterm setaf 1)dpkg-reconfigure iptables-persistent$(tput -T xterm sgr0) $(tput -T xterm setaf 2)if doing any changes to firewall. $(tput -T xterm sgr0)"
+echo "$(tput -T xterm setaf 2) * Please add any new custom service/system script in /usr/local/sbin. This is mandatory! $(tput -T xterm sgr0)"
+echo "$(tput -T xterm setaf 2) * Please set up log rotation (if required) for any new custom service/system script. This is also mandatory! $(tput -T xterm sgr0)"
+printf "\n"
+echo "$(tput -T xterm setaf 2)--- $(hostname)$(tput -T xterm sgr0) $(tput -T xterm setaf 1)**GENERAL**$(tput -T xterm sgr0) $(tput -T xterm setaf 2)changes log end --- $(tput -T xterm sgr0)"
+printf "\n"
