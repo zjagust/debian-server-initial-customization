@@ -381,6 +381,10 @@ function remoteSSH ()
 	# Set a proper line endings - just in case
 	sed -i 's/\r$//' /root/.ssh/authorized_keys
 
+	# Force resolvconf to update all its subscribers
+	resolvconf -u
+	sleep 5
+
 } # remoteSSH end
 
 #######################
