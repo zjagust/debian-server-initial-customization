@@ -120,15 +120,15 @@ function setSources ()
 	if [[ "$OS_VERSION" -ge "12" ]]
 	then
 		echo -e "# Main Repos
-deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free-firmware
-deb http://deb.debian.org/debian-security/ $OS_CODENAME-security main contrib non-free-firmware
-deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free-firmware
+deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian-security/ $OS_CODENAME-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian $OS_CODENAME-updates main contrib non-free non-free-firmware
 # Sources - enable only when needed
 #deb-src http://deb.debian.org/debian $OS_CODENAME main
 #deb-src http://deb.debian.org/debian-security/ $OS_CODENAME-security main
 #deb-src http://deb.debian.org/debian $OS_CODENAME-updates main
 # Backports - For software like Git, Redis, etc.
-deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free-firmware" > /etc/apt/sources.list
+deb http://deb.debian.org/debian $OS_CODENAME-backports main contrib non-free non-free-firmware" > /etc/apt/sources.list
 	else
 		echo -e "# Main Repos
 deb http://deb.debian.org/debian $OS_CODENAME main contrib non-free
