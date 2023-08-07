@@ -239,6 +239,7 @@ function standardSoftware ()
 
 	# Force resolvconf to update all its subscribers
 	resolvconf -u
+	sleep 5
 
 } # standardSoftware end
 
