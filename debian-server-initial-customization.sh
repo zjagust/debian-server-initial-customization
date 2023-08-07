@@ -258,7 +258,7 @@ nameserver 8.8.4.4
 	if [[ "$OS_VERSION" -ge "12" ]]
 	then
 		systemctl restart resolvconf-pull-resolved.service
-		systemctl restart systemd-resolved.service
+		resolvconf -u
 	else
 		systemctl restart resolvconf.service
 		systemctl restart systemd-resolved.service
