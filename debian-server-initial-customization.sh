@@ -239,8 +239,14 @@ function standardSoftware ()
 	tcpdump telnet time uuid-runtime xml-core iptables resolvconf lsb-release openssh-server
 
 	# Enable resolvconf.service
-	systemctl start resolvconf.service
-	systemctl enable resolvconf.service
+	if [[ "$OS_VERSION" -ge "12" ]]
+	then
+		systemctl start resolvconf-pull-resolved.service
+		systemctl enable resolvconf-pull-resolved.service
+	else
+		systemctl start resolvconf.service
+		systemctl enable resolvconf.service
+	fi
 
 	# Set Google DNS nameservers
 	cat <<-EOF > /etc/resolvconf/resolv.conf.d/head
