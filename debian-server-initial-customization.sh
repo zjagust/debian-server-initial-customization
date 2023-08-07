@@ -237,6 +237,9 @@ function standardSoftware ()
 	lshw lsof ltrace man-db manpages mlocate mtr-tiny parted powermgmt-base psmisc rsync sgml-base strace \
 	tcpdump telnet time uuid-runtime xml-core iptables resolvconf lsb-release openssh-server
 
+	# Force resolvconf to update all its subscribers
+	resolvconf -u
+
 } # standardSoftware end
 
 ###############################
