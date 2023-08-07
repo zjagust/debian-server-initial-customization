@@ -302,7 +302,12 @@ function setBashrc ()
 {
 
 	# Backup distribution .bashrc
-	cp /root/.bachrc /root/.bachrc.dist
+	if [ -f "/root/.bashrc" ]
+	then
+		cp /root/.bachrc /root/.bachrc.dist
+	else
+		echo "No default .bashrc found, no backup required."
+	fi
 	# Set custom bashrc env file
 	cd "$(dirname -- "$0")" || exit
 	cp environment/.bashrc /root/.
