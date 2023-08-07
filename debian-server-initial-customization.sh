@@ -202,7 +202,7 @@ function sysdigRepo ()
 	# Set Sysdig repo key
 	if [[ "$OS_VERSION" -ge "12" ]]
 	then
-		curl -sS https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | sudo tee /usr/share/keyrings/sysdig.gpg
+		curl -sS https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | tee /usr/share/keyrings/draios.gpg
 	else
 		curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | apt-key add -
 	fi
@@ -211,7 +211,7 @@ function sysdigRepo ()
 	curl -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list
 	if [[ "$OS_VERSION" -ge "12" ]]
 	then
-		sed -i "s/deb/& [signed-by=\/usr\/share\/keyrings\/sysdig.gpg]/g" /etc/apt/sources.list.d/draios.list
+		sed -i "0,/deb/ s/deb/& [signed-by=\/usr\/share\/keyrings\/draios.gpg]/g" /etc/apt/sources.list.d/draios.list
 	fi
 
 	# Update APT
