@@ -33,7 +33,7 @@ apt install -y --no-install-recommends git
 You can clone this repository anywhere on VPS, i.e.:
 
 ```bash
-cd /tmp && git clone git@github.com:zjagust/debian-server-initial-customization.git
+cd /tmp && git clone https://github.com/zjagust/debian-server-initial-customization.git
 ```
 
 Once repository is cloned, execute the following commands:
