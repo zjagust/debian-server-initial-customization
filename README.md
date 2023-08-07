@@ -25,7 +25,7 @@ echo -e "deb http://deb.debian.org/debian $OS_CODENAME main" > /etc/apt/sources.
 
 ```bash
 apt update
-apt install -y --no-install-recommends git
+apt install -y --no-install-recommends git ca-certificates
 ```
 
 ## Script Installation
