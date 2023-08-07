@@ -367,7 +367,7 @@ function remoteSSH ()
 
 	# Request user public key - external
 	echo -e "On Windows (OpenSSH client must be enabled!), open ${B}Windows PowerShell${R} and please execute the following: "
-	echo -e "${B}type C:\Users\\$Env:USERNAME\.ssh\id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
+	echo -e "${B}type C:\Users\\\$Env:USERNAME\.ssh\id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
 	echo
 	echo -e "On Linux, open ${B}Terminal${R} and please execute the following: "
 	echo -e "${B}cat /home/\$(whoami)/.ssh/id_rsa.pub | ssh root@$MACHINE_IP -T \"cat >> /root/.ssh/authorized_keys\"${R}"
