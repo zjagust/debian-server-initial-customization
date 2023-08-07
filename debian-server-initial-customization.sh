@@ -238,9 +238,15 @@ function standardSoftware ()
 	lshw lsof ltrace man-db manpages mlocate mtr-tiny parted powermgmt-base psmisc rsync sgml-base strace \
 	tcpdump telnet time uuid-runtime xml-core iptables resolvconf lsb-release openssh-server
 
-	# Force resolvconf to update all its subscribers
-	resolvconf -u
-	sleep 5
+	# Enable resolvconf.service
+	systemctl start resolvconf.service
+	systemctl enable resolvconf.service
+
+	# Set Google DNS nameservers
+	cat <<-EOF > /etc/resolvconf/resolv.conf.d/head
+nameserver 8.8.8.8 
+nameserver 8.8.4.4
+	EOF
 
 } # standardSoftware end
 
@@ -380,10 +386,6 @@ function remoteSSH ()
 
 	# Set a proper line endings - just in case
 	sed -i 's/\r$//' /root/.ssh/authorized_keys
-
-	# Force resolvconf to update all its subscribers
-	resolvconf -u
-	sleep 5
 
 } # remoteSSH end
 
