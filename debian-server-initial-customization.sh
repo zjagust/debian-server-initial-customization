@@ -198,10 +198,22 @@ function sysdigRepo ()
 
 	# Install required software for repo setup
 	apt install -y --no-install-recommends curl gnupg2 ca-certificates
+	
 	# Set Sysdig repo key
-	curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | apt-key add -
+	if [[ "$OS_VERSION" -ge "12" ]]
+	then
+		curl -sS https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | sudo tee /usr/share/keyrings/sysdig.gpg
+	else
+		curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | apt-key add -
+	fi
+
 	# Define Sysdig repo source file
 	curl -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list
+	if [[ "$OS_VERSION" -ge "12" ]]
+	then
+		sed -i "s/deb/& [signed-by=\/usr\/share\/keyrings\/sysdig.gpg]/g" /etc/apt/sources.list.d/draios.list
+	fi
+
 	# Update APT
 	apt update
 
