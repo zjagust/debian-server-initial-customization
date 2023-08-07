@@ -299,7 +299,7 @@ function additionalSoftware ()
 
 	# Install additiona software
 	aptitude install -R -y safecat sharutils lynx zip unzip lrzip pbzip2 p7zip p7zip-full rar pigz unrar acpid \
-	zstd inotify-tools sysfsutils dstat htop lsscsi iotop itop nmap ifstat iftop tcptrack whois atop netcat \
+	zstd inotify-tools sysfsutils dstat htop lsscsi iotop nmap ifstat iftop tcptrack whois atop netcat \
 	sysstat gpm localepurge mc screen vim ethtool apt-file sysdig net-tools sudo wget bsd-mailx dma pwgen
 	# Update apt-file
 	apt-file update
