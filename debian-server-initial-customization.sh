@@ -255,8 +255,14 @@ nameserver 8.8.4.4
 	EOF
 
 	# Restart required services
-	systemctl restart resolvconf.service
-	systemctl restart systemd-resolved.service
+	if [[ "$OS_VERSION" -ge "12" ]]
+	then
+		systemctl restart resolvconf-pull-resolved.service
+		systemctl restart systemd-resolved.service
+	else
+		systemctl restart resolvconf.service
+		systemctl restart systemd-resolved.service
+	fi
 
 } # standardSoftware end
 
