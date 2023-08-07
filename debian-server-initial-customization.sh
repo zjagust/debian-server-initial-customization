@@ -248,6 +248,10 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 	EOF
 
+	# Restart required services
+	systemctl restart resolvconf.service
+	systemctl restart systemd-resolved.service
+
 } # standardSoftware end
 
 ###############################
