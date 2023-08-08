@@ -5,6 +5,13 @@ This script will automatize the initial customization of Debian Server minimal I
 - [Home/Small Office – Debian Server](https://zacks.eu/home-small-office-debian-server/)
 - [Home/Small Office – Debian Server Initial Customization](https://zacks.eu/debian-server-initial-customization/)
 
+Tested on:
+
+- Debian 11 (Bullseye)
+- Debian 12 (Bookwork)
+
+**The script is suited for Debain version 11 (Bullseye) or greater. It will not work on older versions of Debian systems.**
+
 # Usage
 
 This scritp is intended to run on minimal installations of the Debian server systems. Usually those systems are as bare as they can be, and since **git** is a requirement to even get this script, it will need to be installed first. You can install it following the steps below:
