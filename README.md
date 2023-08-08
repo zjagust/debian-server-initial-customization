@@ -8,7 +8,7 @@ This script will automatize the initial customization of Debian Server minimal I
 Tested on:
 
 - Debian 11 (Bullseye)
-- Debian 12 (Bookwork)
+- Debian 12 (Bookworm)
 
 **The script is suited for Debain version 11 (Bullseye) or greater. It will not work on older versions of Debian systems.**
 
