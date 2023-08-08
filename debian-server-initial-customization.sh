@@ -299,8 +299,17 @@ function additionalSoftware ()
 
 	# Install additiona software
 	aptitude install -R -y safecat sharutils lynx zip unzip lrzip pbzip2 p7zip p7zip-full rar pigz unrar acpid \
-	zstd inotify-tools sysfsutils dstat htop lsscsi iotop nmap ifstat iftop tcptrack whois atop netcat \
-	sysstat gpm localepurge mc screen vim ethtool apt-file sysdig net-tools sudo wget bsd-mailx dma pwgen
+	zstd inotify-tools sysfsutils dstat htop lsscsi iotop nmap ifstat iftop tcptrack whois atop sysstat gpm \
+	localepurge mc screen vim ethtool apt-file sysdig net-tools sudo wget bsd-mailx dma pwgen
+
+	# In Debian -ge 12, netcat is virtual package
+	if [[ "$OS_VERSION" -ge "12" ]]
+	then
+		aptitude install -R -y netcat-openbsd
+	else
+		aptitude install -R -y netcat
+	fi
+	
 	# Update apt-file
 	apt-file update
 	# Turn off screen startup message
