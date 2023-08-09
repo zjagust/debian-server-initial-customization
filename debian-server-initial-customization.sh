@@ -242,12 +242,12 @@ function installAptitude ()
 	# Set aptitude configuration
 	mkdir /root/.aptitude
 	touch /root/.aptitude/config
-	cat <<EOF > /root/.aptitude/config
+	cat <<-EOF > /root/.aptitude/config
 aptitude "";
 aptitude::Delete-Unused-Pattern "";
 aptitude::UI "";
 aptitude::UI::Advance-On-Action "true";
-EOF
+	EOF
 
 } # installAptitude end
 
