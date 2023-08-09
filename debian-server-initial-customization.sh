@@ -170,13 +170,9 @@ function modifyGrub ()
 function setLocales ()
 {
 
-	# Update first
-	update-locale LC_MESSAGES=POSIX
-	update-locale LC_LANGUAGE=en_US.UTF-8
-
-	# Export
+	# Export and set LC_MESSAGES
 	export LC_MESSAGES=POSIX
-	export LC_LANGUAGE=en_US.UTF-8
+	locale-gen
 
 }
 
@@ -217,20 +213,12 @@ function sysdigRepo ()
 	apt install -y --no-install-recommends curl gnupg2 ca-certificates
 	
 	# Set Sysdig repo key
-	if [[ "$OS_VERSION" -ge "12" ]]
-	then
-		curl -sS https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | tee /usr/share/keyrings/draios.gpg
-	else
-		curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | apt-key add -
-	fi
-
+	curl -sS https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | tee /usr/share/keyrings/draios.gpg
+	
 	# Define Sysdig repo source file
 	curl -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list
-	if [[ "$OS_VERSION" -ge "12" ]]
-	then
-		sed -i "0,/deb/ s/deb/& [signed-by=\/usr\/share\/keyrings\/draios.gpg]/" /etc/apt/sources.list.d/draios.list
-	fi
-
+	sed -i "0,/deb/ s/deb/& [signed-by=\/usr\/share\/keyrings\/draios.gpg]/" /etc/apt/sources.list.d/draios.list
+	
 	# Update APT
 	apt update
 
