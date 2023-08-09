@@ -163,6 +163,23 @@ function modifyGrub ()
 
 } # modifyGrub end
 
+#################
+## SET LOCALES ##
+#################
+
+function setLocales ()
+{
+
+	# Update first
+	update-locale LC_MESSAGES=POSIX
+	update-locale LC_LANGUAGE=en_US.UTF-8
+
+	# Export
+	export LC_MESSAGES=POSIX
+	export LC_LANGUAGE=en_US.UTF-8
+
+}
+
 ##########################
 ## NET INTERFACES NAMES ##
 ##########################
@@ -227,13 +244,22 @@ function installAptitude ()
 {
 
 	# Install Aptitude
-	apt install --no-install-recommends -y aptitude apt-transport-https
+	apt install --no-install-recommends -y aptitude apt-transport-https dirmngr
 	# Update repos with Aptitude
 	aptitude update -q2
 	# Forget new packages
 	aptitude forget-new
 	# Perform full system upgrade
 	aptitude full-upgrade --purge-unused -y
+	# Set aptitude configuration
+	mkdir /root/.aptitude
+	touch /root/.aptitude/config
+	cat <<EOF > /root/.aptitude/config
+aptitude "";
+aptitude::Delete-Unused-Pattern "";
+aptitude::UI "";
+aptitude::UI::Advance-On-Action "true";
+EOF
 
 } # installAptitude end
 
@@ -286,7 +312,7 @@ function develSoftware ()
 {
 
 	# Install development tools
-	aptitude install -R -y linux-headers-amd64 build-essential
+	aptitude install -R -y linux-headers-amd64 build-essential memtest86+
 
 } # develSoftware end
 
