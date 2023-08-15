@@ -172,6 +172,7 @@ function setLocales ()
 
 	# Export and set LC_MESSAGES
 	export LC_MESSAGES=POSIX
+	echo "LC_MESSAGES=POSIX" >> /etc/default/locale
 	locale-gen
 
 }
