@@ -588,6 +588,7 @@ debianVersion
 preseedInitialize
 setSources
 modifyGrub
+setLocales
 interfacesName
 debconfMinimal
 sysdigRepo
