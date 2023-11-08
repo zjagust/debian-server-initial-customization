@@ -187,7 +187,12 @@ function interfacesName ()
 	# Get current interface name
 	INTERFACE_CURRENT=$(ip a | grep "2: " | awk '{print $2;}' | cut -d: -f1)
 	# Set interface name
-	sed -i "s/$INTERFACE_CURRENT/eth0/" /etc/network/interfaces
+	if [[ $INTERFACE_CURRENT = wl* ]]
+	then
+		sed -i "s/$INTERFACE_CURRENT/wlan0/" /etc/network/interfaces
+	else
+		sed -i "s/$INTERFACE_CURRENT/eth0/" /etc/network/interfaces
+	fi
 
 } # interfacesName end
 
