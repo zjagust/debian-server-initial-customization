@@ -267,8 +267,9 @@ function standardSoftware ()
 	# Install standard software packages
 	aptitude install -R -y busybox_ bash-completion bind9-host busybox-static dnsutils dosfstools \
 	friendly-recovery ftp fuse geoip-database groff-base hdparm info install-info iputils-tracepath \
-	lshw lsof ltrace man-db manpages mlocate mtr-tiny parted powermgmt-base psmisc rsync sgml-base strace \
-	tcpdump telnet time uuid-runtime xml-core iptables resolvconf lsb-release openssh-server dbus
+	libpam-systemd lshw lsof ltrace man-db manpages mlocate mtr-tiny parted powermgmt-base psmisc \
+	rsync sgml-base strace tcpdump telnet time uuid-runtime xml-core iptables resolvconf lsb-release \
+	openssh-server dbus
 
 	# Enable resolvconf.service
 	if [[ "$OS_VERSION" -ge "12" ]]
