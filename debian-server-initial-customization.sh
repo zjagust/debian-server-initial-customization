@@ -309,6 +309,9 @@ function develSoftware ()
 	# Install development tools
 	aptitude install -R -y linux-headers-amd64 build-essential memtest86+
 
+	# Install drivers
+	aptitude install -R -y firmware-linux firmware-linux-free firmware-linux-nonfree
+
 } # develSoftware end
 
 #################################
